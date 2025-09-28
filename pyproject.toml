@@ -1,0 +1,10 @@
+[project]
+name = "mklnk"
+version = "0.1.0"
+description = "A CLI utility for creating windows shortcuts"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+mklnk = "mklnk.main:main"

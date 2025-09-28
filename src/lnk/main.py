@@ -1,7 +1,7 @@
 import typer
 import pathlib
 from typing import Optional
-from . import shortcut
+from . import shortcut, utils
 
 
 app = typer.Typer()
@@ -19,7 +19,15 @@ def mklnk(
     ),
     output: Optional[str] = typer.Option(
         None,
-        help="Set output file name.",
+        help="Sets a custom output name.",
+    ),
+    version: Optional[bool] = typer.Option(
+        None,
+        "--version",
+        callback=utils.version_callback,
+        is_eager=True,
+        is_flag=True,
+        help="Show version and exit.",
     ),
 ):
     """

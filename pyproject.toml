@@ -3,6 +3,7 @@ name = "lnk"
 version = "0.1.0"
 description = "A CLI utility for creating windows shortcuts"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.12"
 dependencies = [
     "pywin32>=311; sys_platform == 'win32'",
@@ -10,6 +11,7 @@ dependencies = [
 ]
 classifiers = [
     "Operating System :: Microsoft :: Windows",
+    "License :: OSI Approved :: MIT License",
 ]
 
 [project.scripts]

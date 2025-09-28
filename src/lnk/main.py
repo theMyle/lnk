@@ -1,6 +1,8 @@
 import typer
 import pathlib
 from typing import Optional
+from . import shortcut
+
 
 app = typer.Typer()
 
@@ -51,19 +53,27 @@ def mklnk(
         typer.echo(INVALID_DEST_MSG, err=True)
         raise typer.Exit(1)
 
-    out = src.stem + ".lnk"
     if output is not None:
-        out = pathlib.Path(output)
-        out = out.stem + ".lnk"
+        out_name = pathlib.Path(output).stem + ".lnk"
+    else:
+        out_name = src.stem + ".lnk"
 
-    print(f"source: {src}")
-    print(f"dest: {dest}")
-    print(f"output: {dest.joinpath(out)}")
+    shortcut_path = dest.joinpath(out_name)
 
+    success = shortcut.create_shortcut(src, shortcut_path)
+    if not success:
+        typer.echo(
+            typer.style("[ERROR]: ", fg=typer.colors.RED)
+            + "Failed to create shortcut.",
+            err=True,
+        )
+        raise typer.Exit(1)
 
-def main():
-    app()
+    typer.echo(
+        typer.style("[SUCCESS]: ", fg=typer.colors.GREEN)
+        + f"Shortcut created at {shortcut_path}"
+    )
 
 
 if __name__ == "__main__":
-    main()
+    app()

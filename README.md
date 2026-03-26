@@ -44,8 +44,8 @@ lnk C:\path\to\file.txt C:\Desktop\
 lnk C:\MyFolder C:\Desktop\
 # Results in: C:\Desktop\MyFolder.lnk
 
-# Create shortcut with custom name
-lnk C:\path\to\file.txt C:\Desktop\ --output "My Custom Shortcut"
+# Create shortcut with custom name (works with relative path too)
+lnk .\file.txt C:\Desktop\ --output "My Custom Shortcut"
 # Results in: C:\Desktop\My Custom Shortcut.lnk
 ```
 
